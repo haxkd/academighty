@@ -47,7 +47,7 @@ const Home = () => {
                 <div className="navbar-nav mx-auto py-0">
                     <Link to="/" className="nav-item nav-link active">Home</Link>
                     <Link to="/about" className="nav-item nav-link">About</Link>
-                    <a href="course.html" className="nav-item nav-link">Courses</a>
+                    <Link to="/course" className="nav-item nav-link">Courses</Link>
                     <div className="nav-item dropdown">
                         <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
@@ -176,6 +176,11 @@ const Home = () => {
         </div>
     </div>
     
+
+
+    
+
+
     <div className="container-fluid px-0 py-5">
         <div className="row mx-0 justify-content-center pt-5">
             <div className="col-lg-6">
