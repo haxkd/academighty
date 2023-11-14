@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Header from "./includes/Header";
 import Footer from "./includes/Footer";
 
@@ -30,13 +29,13 @@ const Home = () => {
                   Courses
                 </button>
                 <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#top">
                     Courses 1
                   </a>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#top">
                     Courses 2
                   </a>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#top">
                     Courses 3
                   </a>
                 </div>
@@ -65,6 +64,7 @@ const Home = () => {
             >
               <div className="position-relative h-100">
                 <img
+                alt="a nice"
                   className="position-absolute w-100 h-100"
                   src="/img/about.jpg"
                   style={{ objectFit: "cover" }}
@@ -196,6 +196,7 @@ const Home = () => {
             <div className="col-lg-5" style={{ minHeight: "500px" }}>
               <div className="position-relative h-100">
                 <img
+                alt="a nice"
                   className="position-absolute w-100 h-100"
                   src="/img/feature.jpg"
                   style={{ objectFit: "cover" }}
@@ -434,19 +435,19 @@ const Home = () => {
                 <h5 className="mb-3">Instructor Name</h5>
                 <p className="mb-2">Web Design & Development</p>
                 <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-youtube"></i>
                   </a>
                 </div>
@@ -458,19 +459,19 @@ const Home = () => {
                 <h5 className="mb-3">Instructor Name</h5>
                 <p className="mb-2">Web Design & Development</p>
                 <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-youtube"></i>
                   </a>
                 </div>
@@ -482,19 +483,19 @@ const Home = () => {
                 <h5 className="mb-3">Instructor Name</h5>
                 <p className="mb-2">Web Design & Development</p>
                 <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-youtube"></i>
                   </a>
                 </div>
@@ -506,19 +507,19 @@ const Home = () => {
                 <h5 className="mb-3">Instructor Name</h5>
                 <p className="mb-2">Web Design & Development</p>
                 <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a className="mx-1 p-1" href="#">
+                  <a className="mx-1 p-1" href="#top">
                     <i className="fab fa-youtube"></i>
                   </a>
                 </div>

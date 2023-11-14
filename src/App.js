@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import NotFound from './components/NotFound';
 import AdminHome from './components/AdminHome';
 import AdminLogin from './components/AdminLogin';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddCourse from './components/AddCourse';
 

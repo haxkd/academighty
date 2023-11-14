@@ -52,16 +52,16 @@ const Footer = () => {
                 <i className="fa fa-envelope mr-2"></i>info@example.com
               </p>
               <div className="d-flex justify-content-start mt-4">
-                <a className="text-white mr-4" href="#">
+                <a className="text-white mr-4" href="#top">
                   <i className="fab fa-2x fa-twitter"></i>
                 </a>
-                <a className="text-white mr-4" href="#">
+                <a className="text-white mr-4" href="#top">
                   <i className="fab fa-2x fa-facebook-f"></i>
                 </a>
-                <a className="text-white mr-4" href="#">
+                <a className="text-white mr-4" href="#top">
                   <i className="fab fa-2x fa-linkedin-in"></i>
                 </a>
-                <a className="text-white" href="#">
+                <a className="text-white" href="#top">
                   <i className="fab fa-2x fa-instagram"></i>
                 </a>
               </div>
@@ -69,19 +69,19 @@ const Footer = () => {
             <div className="col-md-4 mb-5">
               <h3 className="text-white mb-4">Our Courses</h3>
               <div className="d-flex flex-column justify-content-start">
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Web Design
                 </a>
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Apps Design
                 </a>
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Marketing
                 </a>
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Research
                 </a>
-                <a className="text-white-50" href="#">
+                <a className="text-white-50" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>SEO
                 </a>
               </div>
@@ -89,19 +89,19 @@ const Footer = () => {
             <div className="col-md-4 mb-5">
               <h3 className="text-white mb-4">Quick Links</h3>
               <div className="d-flex flex-column justify-content-start">
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Privacy Policy
                 </a>
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Terms & Condition
                 </a>
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Regular FAQs
                 </a>
-                <a className="text-white-50 mb-2" href="#">
+                <a className="text-white-50 mb-2" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Help & Support
                 </a>
-                <a className="text-white-50" href="#">
+                <a className="text-white-50" href="#top">
                   <i className="fa fa-angle-right mr-2"></i>Contact
                 </a>
               </div>
@@ -118,7 +118,7 @@ const Footer = () => {
             <div className="col-md-6 text-center text-md-left mb-3 mb-md-0">
               <p className="m-0">
                 Copyright &copy;{" "}
-                <a className="text-white" href="#">
+                <a className="text-white" href="#top">
                   Your Site Name
                 </a>
                 . All Rights Reserved.
@@ -137,7 +137,7 @@ const Footer = () => {
       </div>
 
       <a
-        href="#"
+        href="#top"
         className="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"
       >
         <i className="fa fa-angle-double-up"></i>

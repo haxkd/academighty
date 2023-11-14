@@ -22,19 +22,19 @@ const Header = () => {
           </div>
           <div className="col-lg-6 text-center text-lg-right">
             <div className="d-inline-flex align-items-center">
-              <a className="text-white px-2" href="">
+              <a className="text-white px-2" href="#top">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a className="text-white px-2" href="">
+              <a className="text-white px-2" href="#top">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a className="text-white px-2" href="">
+              <a className="text-white px-2" href="#top">
                 <i className="fab fa-linkedin-in"></i>
               </a>
-              <a className="text-white px-2" href="">
+              <a className="text-white px-2" href="#top">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a className="text-white pl-2" href="">
+              <a className="text-white pl-2" href="#top">
                 <i className="fab fa-youtube"></i>
               </a>
             </div>
@@ -74,7 +74,7 @@ const Header = () => {
               {isAdmin && (
         <><div className="nav-item dropdown">
         <a
-          href="#"
+          href="#top"
           className="nav-link dropdown-toggle"
           data-toggle="dropdown"
         >
