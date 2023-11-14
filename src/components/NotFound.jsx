@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import Header from './includes/Header'
 
 const NotFound = () => {
   return (
     <>
 
-
+<Header/>
     <div className="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style={{visibility: 'visible', animationDelay: '0.1s', animationName: 'fadeInUp'}}>
         <div className="container text-center">
             <div className="row justify-content-center">
