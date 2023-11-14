@@ -84,22 +84,13 @@ const Header = () => {
           <Link to="/admin/addcourse" className="dropdown-item">
            Add Course
           </Link>
-          <a href="feature.html" className="dropdown-item">
-            Our Features
-          </a>
-          <a href="team.html" className="dropdown-item">
-            Instructors
-          </a>
-          <a href="testimonial.html" className="dropdown-item">
-            Testimonial
-          </a>
         </div>
       </div></>
       )}
               
-              <a href="contact.html" className="nav-item nav-link">
+              <Link to="/contact" className="nav-item nav-link">
                 Contact
-              </a>
+              </Link>
             </div>
             <Link
               to="/admin/"
