@@ -16,11 +16,8 @@ const AdminLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
         sessionStorage.setItem("admin",userCredential.user.uid);
         navigate("/admin/");
-
-        
       })
       .catch((error) => {
         const errorCode = error.code;
