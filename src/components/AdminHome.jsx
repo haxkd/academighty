@@ -1,51 +1,76 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./includes/Header";
 import Footer from "./includes/Footer";
 import { toast } from "react-toastify";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./includes/Config";
+import { Link } from "react-router-dom";
 const AdminHome = () => {
+  let [courses, setCourses] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     if (sessionStorage.getItem("admin") == null) {
       navigate("/admin/login");
       toast.error("Please Login First", {
         position: toast.POSITION.TOP_RIGHT,
-    });
+      });
     }
-  });
+    fetchPost();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
+  async function fetchPost() {
+    const querySnapshot = await getDocs(collection(db, "courses"));
+    // setCourses(querySnapshot);
+    const coursesData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setCourses(coursesData);
+  }
+
   return (
     <>
-    <Header/>
+      <Header />
       <div className="container">
         <div className="table-responsive">
           <table className="my-5 table table-bordered border-primary table-light table-striped">
             <thead className="table-dark">
               <tr>
                 <th>#</th>
-                <th>Car</th>
-                <th>User</th>
-                <th>Status</th>
-                <th>View</th>
-                <th className="text-center">Action</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              
+              {courses &&
+                courses.map((doc, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index+1}</td>
+                      <td>{doc.CourseName}</td>
+                      <td>{doc.CoursePrice}</td>
+                      <td><img src={doc.CourseImage} alt="course images" className="img-fluid" style={{height:"100px"}} /></td>
+                      <td style={{textAlign:"center",verticalAlign:"middle"}}><Link className="btn rounded btn-outline-success" to={`/admin/course/${doc.id}`}>EDIT</Link></td>
+                    </tr>
+                  );
+                })}
+            </tbody>
             <tfoot>
               <tr>
                 <td colSpan={6}>
-                  <>
-                    <h1 className="text-center p-5">
-                      Sorry No course Available...!
-                    </h1>
-                  </>
+                {courses && courses.length === 0 && <><h1 className="text-center p-5"> Sorry No Course Available...!</h1></>}
                 </td>
               </tr>
             </tfoot>
           </table>
         </div>
       </div>
-      <Footer/>
-
+      <Footer />
     </>
   );
 };
