@@ -5,7 +5,20 @@ import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "./includes/Footer";
-import { doc, getDoc, setDoc, collection, addDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  setDoc,
+  collection,
+  addDoc,
+} from "firebase/firestore";
+import {
+  uploadBytes,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 import { db } from "./includes/Config";
 import { toast } from "react-toastify";
 import { storage } from "./includes/Config";
@@ -14,6 +27,7 @@ const AdminCourse = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [imgUrl, setImgUrl] = useState();
   let param = useParams();
   const navigate = useNavigate();
   function handleImageChange(e) {
@@ -24,7 +38,7 @@ const AdminCourse = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  },[]);
   async function fetchData() {
     const docRef = doc(db, "courses", param.id);
     const docSnap = await getDoc(docRef);
@@ -42,7 +56,41 @@ const AdminCourse = () => {
       navigate("/admin/");
     }
   }
-  async function handleSave() {}
+  async function handleSave() {
+    const mydoc = doc(db, "courses", param.id);
+    if (image) {
+      const storageRef = ref(storage, `courses/${image.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, image);
+      await uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (error) => {},
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            let updatedDoc = {
+                CourseDescription: description,
+                CourseName: name,
+                CoursePrice: price,
+                CourseImage:downloadURL
+              };
+              await updateDoc(mydoc,updatedDoc );
+          });
+        }
+      );
+    }
+    else{
+        let updatedDoc = {
+            CourseDescription: description,
+            CourseName: name,
+            CoursePrice: price,
+          };
+          await updateDoc(mydoc,updatedDoc );
+    }
+    toast.success("Course Updated Successfully", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+  }
+
   async function handleDelete() {}
   return (
     <>
