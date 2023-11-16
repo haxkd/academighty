@@ -4,10 +4,8 @@ import Header from "./includes/Header";
 import Footer from "./includes/Footer";
 import { toast } from "react-toastify";
 import {
-  doc,
   query,
   orderBy,
-  limit,
   collection,
   getDocs,
 } from "firebase/firestore";
@@ -108,7 +106,7 @@ const AdminHome = () => {
 
       
       
-      
+
       <Footer />
     </>
   );
