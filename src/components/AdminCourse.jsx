@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
+
 import React, { useState, useEffect } from "react";
 import Header from "./includes/Header";
 import "react-quill/dist/quill.snow.css";
@@ -10,12 +10,8 @@ import {
   doc,
   getDoc,
   updateDoc,
-  setDoc,
-  collection,
-  addDoc,
 } from "firebase/firestore";
 import {
-  uploadBytes,
   ref,
   uploadBytesResumable,
   getDownloadURL,
@@ -28,7 +24,6 @@ const AdminCourse = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [imgUrl, setImgUrl] = useState();
   let param = useParams();
   const navigate = useNavigate();
   function handleImageChange(e) {
