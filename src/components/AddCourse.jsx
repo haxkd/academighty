@@ -60,6 +60,11 @@ const AddCourse = () => {
           toast.success("Course Added Successfully", {
             position: toast.POSITION.TOP_RIGHT,
           });
+
+          setName("");
+          setPrice("");
+          setDescription("");
+          setImage(null);
         });
       }
     );

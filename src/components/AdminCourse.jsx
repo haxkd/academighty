@@ -6,16 +6,8 @@ import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "./includes/Footer";
-import {
-  doc,
-  getDoc,
-  updateDoc,
-} from "firebase/firestore";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db } from "./includes/Config";
 import { toast } from "react-toastify";
 import { storage } from "./includes/Config";
@@ -34,7 +26,7 @@ const AdminCourse = () => {
 
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
   async function fetchData() {
     const docRef = doc(db, "courses", param.id);
     const docSnap = await getDoc(docRef);
@@ -64,30 +56,38 @@ const AdminCourse = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             let updatedDoc = {
-                CourseDescription: description,
-                CourseName: name,
-                CoursePrice: price,
-                CourseImage:downloadURL
-              };
-              await updateDoc(mydoc,updatedDoc );
+              CourseDescription: description,
+              CourseName: name,
+              CoursePrice: price,
+              CourseImage: downloadURL,
+            };
+            await updateDoc(mydoc, updatedDoc);
           });
         }
       );
-    }
-    else{
-        let updatedDoc = {
-            CourseDescription: description,
-            CourseName: name,
-            CoursePrice: price,
-          };
-          await updateDoc(mydoc,updatedDoc );
+    } else {
+      let updatedDoc = {
+        CourseDescription: description,
+        CourseName: name,
+        CoursePrice: price,
+      };
+      await updateDoc(mydoc, updatedDoc);
     }
     toast.success("Course Updated Successfully", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      position: toast.POSITION.TOP_RIGHT,
+    });
   }
 
-  async function handleDelete() {}
+  async function handleDelete() {
+    let choice = window.confirm("are your sure want to delete?");
+    if (choice) {
+      await deleteDoc(doc(db, "courses", param.id));
+      toast.success("Course Deleted Successfully", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      navigate("/admin/");
+    }
+  }
   return (
     <>
       <Header />

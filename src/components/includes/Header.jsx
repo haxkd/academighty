@@ -72,29 +72,34 @@ const Header = () => {
                 Courses
               </Link>
               {isAdmin && (
-        <><div className="nav-item dropdown">
-        <a
-          href="#top"
-          className="nav-link dropdown-toggle"
-          data-toggle="dropdown"
-        >
-          Admin
-        </a>
-        <div className="dropdown-menu m-0">
-          <Link to="/admin/addcourse" className="dropdown-item">
-           Add Course
-          </Link>
-        </div>
-      </div></>
-      )}
-              
+                <>
+                  <div className="nav-item dropdown">
+                    <a
+                      href="#top"
+                      className="nav-link dropdown-toggle"
+                      data-toggle="dropdown"
+                    >
+                      Admin
+                    </a>
+                    <div className="dropdown-menu m-0">
+                      <Link to="/admin/addcourse" className="dropdown-item">
+                        Add Course
+                      </Link>
+                      <Link to="/admin/addbatch" className="dropdown-item">
+                        Add Batches
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              )}
+
               <Link to="/contact" className="nav-item nav-link">
                 Contact
               </Link>
             </div>
             <Link
               to="/admin/"
-              className="btn btn-primary py-2 px-4 d-none d-lg-block"
+              className="btn btn-primary py-2 px-4"
             >
               Admin
             </Link>
