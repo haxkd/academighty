@@ -159,11 +159,15 @@ const AddCourse = () => {
                         name="image"
                         onChange={handleImageChange}
                       />
-                      <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
+                      <label
+                        className="custom-file-label"
+                        htmlFor="inputGroupFile01"
+                      >
+                        Choose file
+                      </label>
                     </div>
                   </div>
                 </div>
-
               </div>
               <div className="form-row">
                 <div className="col-sm-12">

@@ -64,7 +64,7 @@ const Home = () => {
             >
               <div className="position-relative h-100">
                 <img
-                alt="a nice"
+                  alt="a nice"
                   className="position-absolute w-100 h-100"
                   src="/img/about.jpg"
                   style={{ objectFit: "cover" }}
@@ -196,7 +196,7 @@ const Home = () => {
             <div className="col-lg-5" style={{ minHeight: "500px" }}>
               <div className="position-relative h-100">
                 <img
-                alt="a nice"
+                  alt="a nice"
                   className="position-absolute w-100 h-100"
                   src="/img/feature.jpg"
                   style={{ objectFit: "cover" }}
@@ -690,7 +690,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };

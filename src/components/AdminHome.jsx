@@ -3,12 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "./includes/Header";
 import Footer from "./includes/Footer";
 import { toast } from "react-toastify";
-import {
-  query,
-  orderBy,
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { query, orderBy, collection, getDocs } from "firebase/firestore";
 import { db } from "./includes/Config";
 import { Link } from "react-router-dom";
 const AdminHome = () => {
@@ -27,11 +22,9 @@ const AdminHome = () => {
 
   async function fetchPost() {
     // const querySnapshot = await getDocs(collection(db, "courses"));
-    const querySnapshot = await getDocs(query(
-      collection(db, "courses"),
-      orderBy("CourseDate", "desc")
-    ));
-
+    const querySnapshot = await getDocs(
+      query(collection(db, "courses"), orderBy("CourseDate", "desc"))
+    );
 
     const coursesData = querySnapshot.docs.map((doc) => ({
       id: doc.id,
@@ -43,8 +36,11 @@ const AdminHome = () => {
   return (
     <>
       <Header />
-      <div className="container my-5" >
-        <div className="table-responsive shadow-lg rounded"style={{maxHeight:"300px"}} >
+      <div className="container my-5">
+        <div
+          className="table-responsive shadow-lg rounded"
+          style={{ maxHeight: "300px" }}
+        >
           <table className="table table-bordered border-primary table-light table-striped">
             <thead className="table-dark">
               <tr>
@@ -67,7 +63,7 @@ const AdminHome = () => {
                         <img
                           src={doc.CourseImage}
                           alt="course images"
-                          style={{ height: "50px",width:"100px" }}
+                          style={{ height: "50px", width: "100px" }}
                         />
                       </td>
                       <td
@@ -103,9 +99,6 @@ const AdminHome = () => {
       </div>
 
       <hr className="container" />
-
-      
-      
 
       <Footer />
     </>

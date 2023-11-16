@@ -4,11 +4,12 @@ import Header from "./includes/Header";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./includes/Config";
 import { toast } from "react-toastify";
+import Footer from "./includes/Footer";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleLogin() {
     // const auth = getAuth();
@@ -16,25 +17,27 @@ const AdminLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        sessionStorage.setItem("admin",userCredential.user.uid);
+        sessionStorage.setItem("admin", userCredential.user.uid);
         navigate("/admin/");
       })
       .catch((error) => {
         const errorCode = error.code;
         console.log(errorCode);
-        if (errorCode === "auth/invalid-login-credentials" || errorCode==="auth/missing-password" ) {
-            toast.error("Enter valid credentials", {
-                position: toast.POSITION.TOP_RIGHT,
-            });
-        } 
-        else if(errorCode==="auth/invalid-email"){
-            toast.error("Enter valid Email", {
-                position: toast.POSITION.TOP_RIGHT,
-            });
-        }else {
+        if (
+          errorCode === "auth/invalid-login-credentials" ||
+          errorCode === "auth/missing-password"
+        ) {
+          toast.error("Enter valid credentials", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        } else if (errorCode === "auth/invalid-email") {
+          toast.error("Enter valid Email", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        } else {
           toast.error("something went wrong try again later", {
             position: toast.POSITION.TOP_RIGHT,
-        });
+          });
         }
       });
   }
@@ -93,6 +96,7 @@ const AdminLogin = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

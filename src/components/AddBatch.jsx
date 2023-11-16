@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./includes/Header";
 import { useNavigate } from "react-router-dom";
 import Footer from "./includes/Footer";
@@ -29,8 +29,8 @@ const AddBatch = () => {
     toast.success("Batch Added Successfully", {
       position: toast.POSITION.TOP_RIGHT,
     });
-    setName("")
-    setTiming("")
+    setName("");
+    setTiming("");
   }
   function toSeoUrl(url) {
     return url
