@@ -1,13 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useState, useEffect } from "react";
 import Header from "./includes/Header";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "./includes/Footer";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db } from "./includes/Config";
 import { toast } from "react-toastify";
-import { storage } from "./includes/Config";
 const AdminBatch = () => {
     const [name, setName] = useState("");
     const [timing, setTiming] = useState("");
