@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddCourse from './components/AddCourse';
 import AdminCourse from './components/AdminCourse';
 import AddBatch from './components/AddBatch';
+import AdminBatch from './components/AdminBatch';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/admin/addcourse" element={<AddCourse />} />
         <Route path="/admin/course/:id" element={<AdminCourse />} />
         <Route path="/admin/addbatch" element={<AddBatch />} />
+        <Route path="/admin/batch/:id" element={<AdminBatch />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />

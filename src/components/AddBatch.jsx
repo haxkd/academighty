@@ -110,6 +110,7 @@ const AddBatch = () => {
         </div>
       </div>
       <Footer />
+      
     </>
   );
 };

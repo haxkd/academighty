@@ -8,6 +8,7 @@ import { db } from "./includes/Config";
 import { Link } from "react-router-dom";
 const AdminHome = () => {
   let [courses, setCourses] = useState();
+  let [batches, setBatches] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     if (sessionStorage.getItem("admin") == null) {
@@ -17,6 +18,7 @@ const AdminHome = () => {
       });
     }
     fetchPost();
+    fetchBatch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -31,6 +33,18 @@ const AdminHome = () => {
       ...doc.data(),
     }));
     setCourses(coursesData);
+  }
+  async function fetchBatch() {
+    // const querySnapshot = await getDocs(collection(db, "courses"));
+    const querySnapshot = await getDocs(
+      query(collection(db, "batches"), orderBy("BatchDate", "desc"))
+    );
+
+    const batchData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setBatches(batchData);
   }
 
   return (
@@ -96,9 +110,61 @@ const AdminHome = () => {
             </tfoot>
           </table>
         </div>
+      <hr className="container" />
+      <div
+          className="table-responsive shadow-lg rounded"
+          style={{ maxHeight: "300px" }}
+        >
+          <table className="table table-bordered border-primary table-light table-striped">
+            <thead className="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Timing</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {batches &&
+                batches.map((doc, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{doc.BatchName}</td>
+                      <td>{doc.BatchTiming}</td>
+                      
+                      <td
+                        style={{ textAlign: "center", verticalAlign: "middle" }}
+                      >
+                        <Link
+                          className="btn rounded btn-outline-success"
+                          to={`/admin/batch/${doc.id}`}
+                        >
+                          EDIT
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan={6}>
+                  {batches && batches.length === 0 && (
+                    <>
+                      <h1 className="text-center p-5">
+                        {" "}
+                        Sorry No Batches Available...!
+                      </h1>
+                    </>
+                  )}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
 
-      <hr className="container" />
 
       <Footer />
     </>
