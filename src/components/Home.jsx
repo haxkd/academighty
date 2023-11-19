@@ -1,8 +1,33 @@
 import React from "react";
 import Header from "./includes/Header";
 import Footer from "./includes/Footer";
+import { useEffect, useState } from "react";
+
+import { query, orderBy, limit, collection, getDocs } from "firebase/firestore";
+import { db } from "./includes/Config";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+  let [courses, setCourses] = useState();
+
+  useEffect(() => {
+    fetchCourses();
+  }, [])
+
+  async function fetchCourses() {
+    const querySnapshot = await getDocs(
+      query(collection(db, "courses"), limit(4), orderBy("CourseDate", "desc"))
+    );
+
+    const coursesData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setCourses(coursesData);
+  }
+
+
+
   return (
     <>
       <Header />
@@ -207,159 +232,49 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container-fluid px-0 py-5">
-        <div className="row mx-0 justify-content-center pt-5">
-          <div className="col-lg-6">
-            <div className="section-title text-center position-relative mb-4">
-              <h6 className="d-inline-block position-relative text-secondary text-uppercase pb-2">
-                Our Courses
-              </h6>
-              <h1 className="display-4">
-                Checkout New Releases Of Our Courses
-              </h1>
+      <div>
+
+
+
+
+        <div className="container py-5">
+          <div className="row mx-0 justify-content-center">
+            <div className="col-lg-8">
+              <div className="section-title text-center position-relative mb-5">
+                <h6 className="d-inline-block position-relative text-secondary text-uppercase pb-2">
+                  Our Courses
+                </h6>
+                <h1 className="display-4">Checkout New Releases Of Our Courses</h1>
+              </div>
             </div>
+          </div>
+          <div className="row">
+            {courses && courses.map((item, index) => {
+              return (<div key={index} className="col-lg-4 col-md-6 pb-4">
+                <Link
+                  className="courses-list-item position-relative d-block overflow-hidden mb-2"
+                  to={`/course/${item.id}`}
+                >
+                  <img className="img-fluid" src={item.CourseImage} style={{ height: "400px", width: "600px" }} alt="" />
+                  <div className="courses-text">
+                    <h4 className="text-center text-white px-3">
+                      {item.CourseName}
+                    </h4>
+                  </div>
+                </Link>
+              </div>)
+            })}
+          </div>
+          <div className="container d-flex justify-content-center py-3 px-4">
+            <Link className="btn btn-md btn-secondary py-3 px-5" to="/course">
+              See All Courses
+            </Link>
           </div>
         </div>
-        <div className="owl-carousel courses-carousel">
-          <div className="courses-item position-relative">
-            <img className="img-fluid" src="/img/courses-1.jpg" alt="" />
-            <div className="courses-text">
-              <h4 className="text-center text-white px-3">
-                Web design & development courses for beginners
-              </h4>
-              <div className="border-top w-100 mt-3">
-                <div className="d-flex justify-content-between p-4">
-                  <span className="text-white">
-                    <i className="fa fa-user mr-2"></i>Jhon Doe
-                  </span>
-                  <span className="text-white">
-                    <i className="fa fa-star mr-2"></i>4.5 <small>(250)</small>
-                  </span>
-                </div>
-              </div>
-              <div className="w-100 bg-white text-center p-4">
-                <a className="btn btn-primary" href="detail.html">
-                  Course Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="courses-item position-relative">
-            <img className="img-fluid" src="/img/courses-2.jpg" alt="" />
-            <div className="courses-text">
-              <h4 className="text-center text-white px-3">
-                Web design & development courses for beginners
-              </h4>
-              <div className="border-top w-100 mt-3">
-                <div className="d-flex justify-content-between p-4">
-                  <span className="text-white">
-                    <i className="fa fa-user mr-2"></i>Jhon Doe
-                  </span>
-                  <span className="text-white">
-                    <i className="fa fa-star mr-2"></i>4.5 <small>(250)</small>
-                  </span>
-                </div>
-              </div>
-              <div className="w-100 bg-white text-center p-4">
-                <a className="btn btn-primary" href="detail.html">
-                  Course Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="courses-item position-relative">
-            <img className="img-fluid" src="/img/courses-3.jpg" alt="" />
-            <div className="courses-text">
-              <h4 className="text-center text-white px-3">
-                Web design & development courses for beginners
-              </h4>
-              <div className="border-top w-100 mt-3">
-                <div className="d-flex justify-content-between p-4">
-                  <span className="text-white">
-                    <i className="fa fa-user mr-2"></i>Jhon Doe
-                  </span>
-                  <span className="text-white">
-                    <i className="fa fa-star mr-2"></i>4.5 <small>(250)</small>
-                  </span>
-                </div>
-              </div>
-              <div className="w-100 bg-white text-center p-4">
-                <a className="btn btn-primary" href="detail.html">
-                  Course Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="courses-item position-relative">
-            <img className="img-fluid" src="/img/courses-4.jpg" alt="" />
-            <div className="courses-text">
-              <h4 className="text-center text-white px-3">
-                Web design & development courses for beginners
-              </h4>
-              <div className="border-top w-100 mt-3">
-                <div className="d-flex justify-content-between p-4">
-                  <span className="text-white">
-                    <i className="fa fa-user mr-2"></i>Jhon Doe
-                  </span>
-                  <span className="text-white">
-                    <i className="fa fa-star mr-2"></i>4.5 <small>(250)</small>
-                  </span>
-                </div>
-              </div>
-              <div className="w-100 bg-white text-center p-4">
-                <a className="btn btn-primary" href="detail.html">
-                  Course Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="courses-item position-relative">
-            <img className="img-fluid" src="/img/courses-5.jpg" alt="" />
-            <div className="courses-text">
-              <h4 className="text-center text-white px-3">
-                Web design & development courses for beginners
-              </h4>
-              <div className="border-top w-100 mt-3">
-                <div className="d-flex justify-content-between p-4">
-                  <span className="text-white">
-                    <i className="fa fa-user mr-2"></i>Jhon Doe
-                  </span>
-                  <span className="text-white">
-                    <i className="fa fa-star mr-2"></i>4.5 <small>(250)</small>
-                  </span>
-                </div>
-              </div>
-              <div className="w-100 bg-white text-center p-4">
-                <a className="btn btn-primary" href="detail.html">
-                  Course Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="courses-item position-relative">
-            <img className="img-fluid" src="/img/courses-6.jpg" alt="" />
-            <div className="courses-text">
-              <h4 className="text-center text-white px-3">
-                Web design & development courses for beginners
-              </h4>
-              <div className="border-top w-100 mt-3">
-                <div className="d-flex justify-content-between p-4">
-                  <span className="text-white">
-                    <i className="fa fa-user mr-2"></i>Jhon Doe
-                  </span>
-                  <span className="text-white">
-                    <i className="fa fa-star mr-2"></i>4.5 <small>(250)</small>
-                  </span>
-                </div>
-              </div>
-              <div className="w-100 bg-white text-center p-4">
-                <a className="btn btn-primary" href="detail.html">
-                  Course Detail
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+
+
+
+
         <div className="row justify-content-center bg-image mx-0 mb-5">
           <div className="col-lg-6 py-5">
             <div className="bg-white p-5 my-5">
