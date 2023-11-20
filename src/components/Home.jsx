@@ -9,10 +9,12 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   let [courses, setCourses] = useState();
+  let [batches, setBatches] = useState();
 
   useEffect(() => {
     fetchCourses();
-  }, [])
+    fetchBatches();
+  }, []);
 
   async function fetchCourses() {
     const querySnapshot = await getDocs(
@@ -26,7 +28,17 @@ const Home = () => {
     setCourses(coursesData);
   }
 
+  async function fetchBatches() {
+    const querySnapshot = await getDocs(
+      query(collection(db, "batches"), limit(4), orderBy("BatchDate", "desc"))
+    );
 
+    const batchData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setBatches(batchData);
+  }
 
   return (
     <>
@@ -233,10 +245,6 @@ const Home = () => {
       </div>
 
       <div>
-
-
-
-
         <div className="container py-5">
           <div className="row mx-0 justify-content-center">
             <div className="col-lg-8">
@@ -244,26 +252,36 @@ const Home = () => {
                 <h6 className="d-inline-block position-relative text-secondary text-uppercase pb-2">
                   Our Courses
                 </h6>
-                <h1 className="display-4">Checkout New Releases Of Our Courses</h1>
+                <h1 className="display-4">
+                  Checkout New Releases Of Our Courses
+                </h1>
               </div>
             </div>
           </div>
           <div className="row">
-            {courses && courses.map((item, index) => {
-              return (<div key={index} className="col-lg-4 col-md-6 pb-4">
-                <Link
-                  className="courses-list-item position-relative d-block overflow-hidden mb-2"
-                  to={`/course/${item.id}`}
-                >
-                  <img className="img-fluid" src={item.CourseImage} style={{ height: "400px", width: "600px" }} alt="" />
-                  <div className="courses-text">
-                    <h4 className="text-center text-white px-3">
-                      {item.CourseName}
-                    </h4>
+            {courses &&
+              courses.map((item, index) => {
+                return (
+                  <div key={index} className="col-lg-4 col-md-6 pb-4">
+                    <Link
+                      className="courses-list-item position-relative d-block overflow-hidden mb-2"
+                      to={`/course/${item.id}`}
+                    >
+                      <img
+                        className="img-fluid"
+                        src={item.CourseImage}
+                        style={{ height: "400px", width: "600px" }}
+                        alt=""
+                      />
+                      <div className="courses-text">
+                        <h4 className="text-center text-white px-3">
+                          {item.CourseName}
+                        </h4>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>)
-            })}
+                );
+              })}
           </div>
           <div className="container d-flex justify-content-center py-3 px-4">
             <Link className="btn btn-md btn-secondary py-3 px-5" to="/course">
@@ -271,9 +289,6 @@ const Home = () => {
             </Link>
           </div>
         </div>
-
-
-
 
         <div className="row justify-content-center bg-image mx-0 mb-5">
           <div className="col-lg-6 py-5">
@@ -336,110 +351,49 @@ const Home = () => {
         <div className="container py-5">
           <div className="section-title text-center position-relative mb-5">
             <h6 className="d-inline-block position-relative text-secondary text-uppercase pb-2">
-              Instructors
+              Batches
             </h6>
-            <h1 className="display-4">Meet Our Instructors</h1>
+            <h1 className="display-4">Latest Batches</h1>
           </div>
-          <div
-            className="owl-carousel team-carousel position-relative"
-            style={{ padding: "0 30px" }}
-          >
-            <div className="team-item">
-              <img className="img-fluid w-100" src="/img/team-1.jpg" alt="" />
-              <div className="bg-light text-center p-4">
-                <h5 className="mb-3">Instructor Name</h5>
-                <p className="mb-2">Web Design & Development</p>
-                <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-instagram"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-youtube"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-item">
-              <img className="img-fluid w-100" src="/img/team-2.jpg" alt="" />
-              <div className="bg-light text-center p-4">
-                <h5 className="mb-3">Instructor Name</h5>
-                <p className="mb-2">Web Design & Development</p>
-                <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-instagram"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-youtube"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-item">
-              <img className="img-fluid w-100" src="/img/team-3.jpg" alt="" />
-              <div className="bg-light text-center p-4">
-                <h5 className="mb-3">Instructor Name</h5>
-                <p className="mb-2">Web Design & Development</p>
-                <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-instagram"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-youtube"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-item">
-              <img className="img-fluid w-100" src="/img/team-4.jpg" alt="" />
-              <div className="bg-light text-center p-4">
-                <h5 className="mb-3">Instructor Name</h5>
-                <p className="mb-2">Web Design & Development</p>
-                <div className="d-flex justify-content-center">
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-instagram"></i>
-                  </a>
-                  <a className="mx-1 p-1" href="#top">
-                    <i className="fab fa-youtube"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="row">
+            {batches &&
+              batches.map((item, index) => {
+                console.log(item);
+                return (
+                  <div key={index} className="col-lg-4 col-md-6 pb-4">
+                    <Link
+                      className="courses-list-item position-relative d-block overflow-hidden mb-2"
+                      to={`/batch/${item.id}`}
+                    >
+                     <img
+                        className="img-fluid"
+                        src="/img/courses-4.jpg"
+                        style={{ height: "400px", width: "600px" }}
+                        alt=""
+                      />
+                     
+
+                      <div className="courses-text">
+                        <h4 className="text-center text-white px-3">
+                          {item.BatchName}
+                        </h4>
+                        <div className="border-top w-100 mt-3">
+                                <div className="d-flex justify-content-between p-4">
+                                    <span className="text-white"><i className="fa fa-clock mr-2"></i>
+                                        <small>({item.BatchTiming})</small></span>
+                                </div>
+                            </div>
+                      </div>
+
+                    </Link>
+                  </div>
+                );
+              })}
+          </div>
+          <div className="container d-flex justify-content-center py-3 px-4">
+            <Link className="btn btn-md btn-secondary py-3 px-5" to="/batch">
+              See All Batches
+            </Link>
           </div>
         </div>
       </div>
