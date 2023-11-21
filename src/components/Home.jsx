@@ -274,7 +274,7 @@ const Home = () => {
                         alt=""
                       />
                       <div className="courses-text">
-                        <h4 className="text-center text-white px-3">
+                        <h4 className="text-center text-white px-3 mb-5">
                           {item.CourseName}
                         </h4>
                       </div>
@@ -358,7 +358,6 @@ const Home = () => {
           <div className="row">
             {batches &&
               batches.map((item, index) => {
-                console.log(item);
                 return (
                   <div key={index} className="col-lg-4 col-md-6 pb-4">
                     <Link

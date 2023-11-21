@@ -12,6 +12,7 @@ import AddBatch from './components/AddBatch';
 import AdminBatch from './components/AdminBatch';
 import About from './components/About';
 import Contact from './components/Contact';
+import Courses from './components/Courses';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin/" element={<AdminHome />} />
+        <Route path="/course/" element={<Courses />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/addcourse" element={<AddCourse />} />
         <Route path="/admin/course/:id" element={<AdminCourse />} />
