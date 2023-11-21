@@ -42,7 +42,7 @@ const Courses = () => {
         }));
         setCourses(coursesData);
 
-        if(totalCount<pagecount && totalCount != -1){
+        if(totalCount<pagecount && totalCount !== -1){
             setButtonText('All Course Loaded!');
             setButtonDisabled(true);
         }
