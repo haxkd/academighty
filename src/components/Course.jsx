@@ -79,7 +79,7 @@ const Course = () => {
             </div>
             <h5 className="text-white py-3 px-4 m-0">Course Price: $199</h5>
             <div className="py-3 px-4">
-              <a className="btn btn-block btn-secondary py-3 px-5" href="">
+              <a className="btn btn-block btn-secondary py-3 px-5" href="#top">
                 Enroll Now
               </a>
             </div>
