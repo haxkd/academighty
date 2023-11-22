@@ -25,7 +25,7 @@ const Course = () => {
             <img
               className="img-fluid rounded w-100 mb-4"
               src="/img/header.jpg"
-              alt="Image"
+              alt="Images"
             />
             <p>
               Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam
