@@ -78,7 +78,7 @@ const Courses = () => {
                                     <div key={index} className="col-lg-4 col-md-6 pb-4">
                                         <Link
                                             className="courses-list-item position-relative d-block overflow-hidden mb-2"
-                                            to={`/batch/${item.id}`}
+                                            to={`/course/${item.id}`}
                                         >
                                             <img className="img-fluid" src={item.CourseImage} alt="" style={{ height: "400px", width: "600px" }} />
                                             <div className="courses-text">
