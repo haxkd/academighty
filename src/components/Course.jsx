@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './includes/Header'
 import Footer from './includes/Footer'
+import { useNavigate, useParams } from 'react-router-dom'
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "./includes/Config";
 
 const Course = () => {
+    let params = useParams();
+    let navigate = useNavigate();
+    let [course,setCourse] = useState();
+    useEffect(()=>{
+        getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
+
+    async function getData(){
+        const docRef = doc(db, "courses", params.id);
+        const docSnap = await getDoc(docRef);
+        const data = await docSnap.data();
+        if(data===undefined){
+            navigate("/")
+        }
+        setCourse(docSnap.data());
+        console.log(course);
+    }
   return (
     <>
     <Header/>
@@ -19,32 +40,15 @@ const Course = () => {
                 Course Detail
               </h6>
               <h1 className="display-4">
-                Web design &amp; development courses for beginners
+                {course && course.CourseName}
               </h1>
             </div>
             <img
               className="img-fluid rounded w-100 mb-4"
-              src="/img/header.jpg"
+              src={course && course.CourseImage}
               alt="Images"
             />
-            <p>
-              Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam
-              dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam
-              diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem
-              et sit, sed stet no labore lorem sit. Sanctus clita duo justo et
-              tempor consetetur takimata eirmod, dolores takimata consetetur
-              invidunt magna dolores aliquyam dolores dolore. Amet erat amet et
-              magna
-            </p>
-            <p>
-              Sadipscing labore amet rebum est et justo gubergren. Et eirmod
-              ipsum sit diam ut magna lorem. Nonumy vero labore lorem sanctus
-              rebum et lorem magna kasd, stet amet magna accusam consetetur
-              eirmod. Kasd accusam sit ipsum sadipscing et at at sanctus et.
-              Ipsum sit gubergren dolores et, consetetur justo invidunt at et
-              aliquyam ut et vero clita. Diam sea sea no sed dolores diam
-              nonumy, gubergren sit stet no diam kasd vero.
-            </p>
+            <div dangerouslySetInnerHTML={{ __html: course && course.CourseDescription }}/>
           </div>
         
         </div>
@@ -77,7 +81,7 @@ const Course = () => {
               <h6 className="text-white my-3">Language</h6>
               <h6 className="text-white my-3">English</h6>
             </div>
-            <h5 className="text-white py-3 px-4 m-0">Course Price: $199</h5>
+            <h5 className="text-white py-3 px-4 m-0">Course Price: ${course && course.CoursePrice}</h5>
             <div className="py-3 px-4">
               <a className="btn btn-block btn-secondary py-3 px-5" href="#top">
                 Enroll Now
