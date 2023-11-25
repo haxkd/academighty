@@ -14,6 +14,8 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Courses from './components/Courses';
 import Course from './components/Course';
+import Batches from './components/Batches';
+import Batch from './components/Batch';
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
         <Route path="/admin/" element={<AdminHome />} />
         <Route path="/course/" element={<Courses />} />
         <Route path="/course/:id" element={<Course />} />
+        <Route path="/batch/" element={<Batches />} />
+        <Route path="/batch/:id" element={<Batch />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/addcourse" element={<AddCourse />} />
         <Route path="/admin/course/:id" element={<AdminCourse />} />
