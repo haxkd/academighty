@@ -12,6 +12,7 @@ const Batch = () => {
   let [batch, setBatch] = useState();
   useEffect(() => {
     getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   async function getData() {
     const docRef = doc(db, "batches", params.id);
