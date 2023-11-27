@@ -59,6 +59,10 @@ const Batch = () => {
               </h6>
             </div>
             <div className="d-flex justify-content-between border-bottom px-4">
+              <h6 className="text-white my-3">Timing</h6>
+              <h6 className="text-white my-3">{batch && batch.BatchTiming}</h6>
+            </div>
+            <div className="d-flex justify-content-between border-bottom px-4">
               <h6 className="text-white my-3">Duration</h6>
               <h6 className="text-white my-3">2 Hrs</h6>
             </div>
