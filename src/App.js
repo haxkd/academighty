@@ -18,7 +18,6 @@ import Batches from './components/Batches';
 import Batch from './components/Batch';
 
 function App() {
-  
   return (
     <>
       <Routes>
